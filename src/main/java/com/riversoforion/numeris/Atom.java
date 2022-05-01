@@ -5,12 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.LongStream;
 
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -32,21 +30,17 @@ enum Atom {
     I(1, 3);
 
     private static final Map<Long, String> valuesToSymbols = new LinkedHashMap<>();
-    private static final List<Long> digits = new LinkedList<>();
 
     static {
-        Arrays.stream(Atom.values()).forEach((atom) -> {
-            Atom.valuesToSymbols.put(atom.value, atom.name());
-            Atom.digits.add(atom.value);
-        });
+        Arrays.stream(Atom.values()).forEach((atom) -> Atom.valuesToSymbols.put(atom.value, atom.name()));
     }
 
     private final long value;
     private final int maxGroup;
 
-    static Iterable<Long> digits() {
+    static LongStream digits() {
 
-        return Collections.unmodifiableCollection(Atom.digits);
+        return Arrays.stream(Atom.values()).mapToLong(Atom::value);
     }
 
     static Optional<String> symbolFromValue(long value) {
