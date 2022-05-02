@@ -20,8 +20,8 @@ import lombok.ToString;
 )
 public final class RomanNumeral {
 
-    public static final long MIN_VALUE = 1;
-    public static final long MAX_VALUE = 3_999;
+    public static final long MIN_VALUE = SharedConstants.MIN_VALUE;
+    public static final long MAX_VALUE = SharedConstants.MAX_VALUE;
 
     /**
      * Retrieves the numeric value of the Roman numeral (e.g. 11 for 'XI').
