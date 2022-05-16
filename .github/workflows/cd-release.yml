@@ -1,0 +1,25 @@
+name: Release Package
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Extract package version
+        run: |
+          version=$(./gradlew properties -q | grep version | awk '{print $2}')
+          echo "::set-output name=version::${version}"
+
+      - name: Tag repo
+        run: |
+          echo "Tagging repo"
+      - name: Increment package version
+        run: |
+          echo "Incrementing package version"
