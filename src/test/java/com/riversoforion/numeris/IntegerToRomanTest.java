@@ -29,9 +29,9 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 class IntegerToRomanTest {
 
     private IntegerToRoman itor;
-    Condition<Either<String, RomanNumeralException>> ok = new Condition<>(Either::isLeft, "is error");
-    Function<Either<String, RomanNumeralException>, String> okResult = Either::getLeft;
-    Condition<Either<String, RomanNumeralException>> err = new Condition<>(Either::isRight, "is error");
+    private final Condition<Either<String, RomanNumeralException>> ok = new Condition<>(Either::isLeft, "is error");
+    private final Function<Either<String, RomanNumeralException>, String> okResult = Either::getLeft;
+    private final Condition<Either<String, RomanNumeralException>> err = new Condition<>(Either::isRight, "is error");
 
     @BeforeEach
     void setup() {

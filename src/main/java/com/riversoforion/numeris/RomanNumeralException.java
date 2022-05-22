@@ -49,4 +49,9 @@ public final class RomanNumeralException extends Exception {
 
         return new RomanNumeralException(String.format("%d is too large", value), OptionalLong.empty());
     }
+
+    public static RomanNumeralException unparseable(String value) {
+
+        return new RomanNumeralException(String.format("%s is not a valid a Roman numeral", value), Optional.of(value));
+    }
 }
