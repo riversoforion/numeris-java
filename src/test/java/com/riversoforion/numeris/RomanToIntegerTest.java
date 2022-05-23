@@ -56,6 +56,21 @@ class RomanToIntegerTest {
     @DisplayName("imperative usage")
     class Imperative {
 
+        @ParameterizedTest(name = "{0} converts to {1}")
+        @CsvSource(textBlock = """
+                               I, 1
+                               V, 5
+                               X, 10
+                               L, 50
+                               C, 100
+                               D, 500
+                               M, 1000
+                               """)
+        @DisplayName("simple values")
+        void simpleNumerals(String romanNumeral, Long expectedNumericValue) throws RomanNumeralException {
+
+            assertThat(rtoi.convert(romanNumeral)).isEqualTo(expectedNumericValue);
+        }
     }
 
     private MappedCondition<Either<Long, RomanNumeralException>, Long> correctResultCondition(Long expectedNumericValue) {
