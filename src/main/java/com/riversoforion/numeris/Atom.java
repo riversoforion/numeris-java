@@ -52,4 +52,8 @@ enum Atom {
             return Optional.empty();
         }
     }
+
+    boolean allowMultiples() {
+        return this.maxGroup > 1;
+    }
 }
