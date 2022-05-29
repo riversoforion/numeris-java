@@ -7,7 +7,7 @@ import java.util.OptionalLong;
 
 
 @Getter
-@SuppressWarnings("OptionalUsedAsFieldOrParameterType")
+@SuppressWarnings({ "OptionalUsedAsFieldOrParameterType", "java:S1948" })
 public final class RomanNumeralException extends Exception {
 
     private final OptionalLong numericValue;

@@ -17,7 +17,7 @@ class AtomTest {
 
     @Test
     @DisplayName("iteration over enum values")
-    public void valueIteration() {
+    void valueIteration() {
 
         var iter = Arrays.stream(values()).iterator();
         assertEquals(M, iter.next());
@@ -53,7 +53,7 @@ class AtomTest {
                            I,   1,    3
                            """)
     @DisplayName("atoms are correctly configured")
-    public void valuesCorrectlySet(Atom atom, long expectedValue, int expectedMaxGroup) {
+    void valuesCorrectlySet(Atom atom, long expectedValue, int expectedMaxGroup) {
 
         assertThat(atom.value()).isEqualTo(expectedValue);
         assertThat(atom.maxGroup()).isEqualTo(expectedMaxGroup);
