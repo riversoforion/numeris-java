@@ -10,7 +10,7 @@ import lombok.ToString;
 /**
  * {@code RomanNumeral} implements a standard Roman numeral, in the range of 1 to 3,999.
  */
-@AllArgsConstructor(access = AccessLevel.PACKAGE)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 @ToString(doNotUseGetters = true)
 @EqualsAndHashCode(
@@ -38,9 +38,10 @@ public final class RomanNumeral {
      * @param numericValue The numeric (integral) value of the new Roman numeral.
      * @return The newly constructed Roman numeral value.
      */
-    public static RomanNumeral of(long numericValue) {
+    public static RomanNumeral of(long numericValue) throws RomanNumeralException {
 
-        return new RomanNumeral(numericValue, "");
+        String stringValue = new IntegerToRoman().convert(numericValue);
+        return new RomanNumeral(numericValue, stringValue);
     }
 
     /**
@@ -49,8 +50,9 @@ public final class RomanNumeral {
      * @param stringValue The Roman representation of the new Roman numeral.
      * @return The newly constructed Roman numeral value.
      */
-    public static RomanNumeral parse(String stringValue) {
+    public static RomanNumeral parse(String stringValue) throws RomanNumeralException {
 
-        return new RomanNumeral(0, stringValue);
+        long numericValue = new RomanToInteger().convert(stringValue);
+        return new RomanNumeral(numericValue, stringValue);
     }
 }
