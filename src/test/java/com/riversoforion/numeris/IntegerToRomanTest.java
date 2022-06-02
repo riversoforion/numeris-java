@@ -29,9 +29,9 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 class IntegerToRomanTest {
 
     private IntegerToRoman itor;
-    Condition<Either<String, RomanNumeralException>> ok = new Condition<>(Either::isLeft, "is error");
-    Function<Either<String, RomanNumeralException>, String> okResult = Either::getLeft;
-    Condition<Either<String, RomanNumeralException>> err = new Condition<>(Either::isRight, "is error");
+    private final Condition<Either<String, RomanNumeralException>> ok = new Condition<>(Either::isLeft, "is error");
+    private final Function<Either<String, RomanNumeralException>, String> okResult = Either::getLeft;
+    private final Condition<Either<String, RomanNumeralException>> err = new Condition<>(Either::isRight, "is error");
 
     @BeforeEach
     void setup() {
@@ -104,6 +104,7 @@ class IntegerToRomanTest {
 
         @Test
         @DisplayName("functional stream demo")
+        @SuppressWarnings("java:S2699")
         void functionalStreamDemo() {
 
             LongStream.rangeClosed(1, 10)
@@ -266,7 +267,7 @@ class IntegerToRomanTest {
                                1,    1
                                """)
         @DisplayName("extracting digits from numeric values")
-        public void extractDigits(long value, long expectedDigit) {
+        void extractDigits(long value, long expectedDigit) {
 
             assertThat(IntegerToRoman.digitExtractor(value)).hasValue(expectedDigit);
         }
@@ -274,14 +275,14 @@ class IntegerToRomanTest {
         @ParameterizedTest(name = "{0} resolves to empty value")
         @ValueSource(longs = { 0, -1 - 30 })
         @DisplayName("extracting digits from invalid values")
-        public void extractDigitsFromInvalidValues(long value) {
+        void extractDigitsFromInvalidValues(long value) {
 
             assertThat(IntegerToRoman.digitExtractor(value)).isEmpty();
         }
 
         @ParameterizedTest(name = "unfolding {0} to {1}")
         @MethodSource
-        public void unfoldDigitsFromValue(long value, long[] expectedDigits) {
+        void unfoldDigitsFromValue(long value, long[] expectedDigits) {
 
             long[] results = IntegerToRoman.unfold(value).toArray();
             assertThat(results).containsExactly(expectedDigits);

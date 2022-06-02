@@ -32,7 +32,7 @@ enum Atom {
     private static final Map<Long, String> valuesToSymbols = new LinkedHashMap<>();
 
     static {
-        Arrays.stream(Atom.values()).forEach((atom) -> Atom.valuesToSymbols.put(atom.value, atom.name()));
+        Arrays.stream(Atom.values()).forEach(atom -> Atom.valuesToSymbols.put(atom.value, atom.name()));
     }
 
     private final long value;
@@ -51,5 +51,9 @@ enum Atom {
         else {
             return Optional.empty();
         }
+    }
+
+    boolean allowMultiples() {
+        return this.maxGroup > 1;
     }
 }

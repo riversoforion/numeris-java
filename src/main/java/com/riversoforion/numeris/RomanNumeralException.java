@@ -7,7 +7,7 @@ import java.util.OptionalLong;
 
 
 @Getter
-@SuppressWarnings("OptionalUsedAsFieldOrParameterType")
+@SuppressWarnings({ "OptionalUsedAsFieldOrParameterType", "java:S1948" })
 public final class RomanNumeralException extends Exception {
 
     private final OptionalLong numericValue;
@@ -48,5 +48,10 @@ public final class RomanNumeralException extends Exception {
     public static RomanNumeralException valueTooLarge(long value) {
 
         return new RomanNumeralException(String.format("%d is too large", value), OptionalLong.empty());
+    }
+
+    public static RomanNumeralException unparseable(String value) {
+
+        return new RomanNumeralException(String.format("%s is not a valid a Roman numeral", value), Optional.of(value));
     }
 }

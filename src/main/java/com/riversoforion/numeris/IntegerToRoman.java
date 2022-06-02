@@ -54,9 +54,10 @@ import static com.riversoforion.numeris.SharedConstants.MIN_VALUE;
  * }
  * </pre>
  */
+@SuppressWarnings("java:S4276")
 public final class IntegerToRoman implements
-        Function<Long, Either<String, RomanNumeralException>>,
-        LongFunction<Either<String, RomanNumeralException>> {
+        LongFunction<Either<String, RomanNumeralException>>,
+        Function<Long, Either<String, RomanNumeralException>> {
 
     /**
      * Implementation of the {@link LongFunction functional interface}.
@@ -134,7 +135,7 @@ public final class IntegerToRoman implements
             return OptionalLong.empty();
         }
         long nextDigit = Atom.digits()
-                             .filter((digit) -> numericValue >= digit)
+                             .filter(digit -> numericValue >= digit)
                              .findFirst()
                              .orElse(1);
         return OptionalLong.of(nextDigit);
