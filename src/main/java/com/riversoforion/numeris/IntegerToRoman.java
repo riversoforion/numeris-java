@@ -60,7 +60,7 @@ public final class IntegerToRoman implements
         Function<Long, Either<String, RomanNumeralException>> {
 
     /**
-     * Implementation of the {@link LongFunction functional interface}.
+     * Implementation of the {@link LongFunction primitive functional interface}.
      *
      * @param numericValue The numeric value to convert
      * @return Either the Roman numeral as a string, or an exception describing why conversion failed
@@ -84,7 +84,7 @@ public final class IntegerToRoman implements
     }
 
     /**
-     * Implementation of the {@link Function functional interface}.
+     * Implementation of the {@link Function boxed functional interface}.
      *
      * @param numericValue The numeric value to convert. Must not be {@code null}.
      * @return Either the Roman numeral as a string, or an exception describing why conversion failed

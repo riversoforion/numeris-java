@@ -11,6 +11,10 @@ import java.util.Optional;
 import java.util.stream.LongStream;
 
 
+/**
+ * All Roman numeral primitives. This includes simple values, like 'I' and 'D', as well as "compound" values such as
+ * "IX" or "CD". The values also carry information about their numeric value and how they can be grouped together.
+ */
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter(AccessLevel.PACKAGE)
 enum Atom {
@@ -38,6 +42,9 @@ enum Atom {
     private final long value;
     private final int maxGroup;
 
+    /**
+     * Streams the numeric values of all atoms in order from largest to smallest.
+     */
     static LongStream digits() {
 
         return Arrays.stream(Atom.values()).mapToLong(Atom::value);
@@ -53,7 +60,7 @@ enum Atom {
         }
     }
 
-    boolean allowMultiples() {
+    boolean allowsMultiples() {
         return this.maxGroup > 1;
     }
 }

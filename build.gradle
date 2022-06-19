@@ -1,6 +1,7 @@
 plugins {
     id 'java'
-    id "io.freefair.lombok" version "6.4.2"
+    id 'io.freefair.lombok' version '6.4.2'
+    id 'com.github.mrsarm.jshell.plugin' version '1.2.0'
 }
 
 group 'com.riversororion'
@@ -20,7 +21,7 @@ dependencies {
     implementation 'com.diffplug.durian:durian-core:1.2.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.2'
-    testImplementation 'org.assertj:assertj-core:3.22.0'
+    testImplementation 'org.assertj:assertj-core:3.23.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 }
 

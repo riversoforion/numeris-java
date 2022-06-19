@@ -20,7 +20,13 @@ import lombok.ToString;
 )
 public final class RomanNumeral {
 
+    /**
+     * The minimum possible value of a Roman numeral.
+     */
     public static final long MIN_VALUE = SharedConstants.MIN_VALUE;
+    /**
+     * The maximum possible value of a Roman numeral.
+     */
     public static final long MAX_VALUE = SharedConstants.MAX_VALUE;
 
     /**
